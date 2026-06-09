@@ -1,0 +1,138 @@
+{% extends "navigation.html" %}
+{% load static %}
+{% block body %}
+
+{% if error == "no" %}
+<script>
+    alert("Login Successful");
+    window.location = "{% url 'admin_home' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid Admin Credentials");
+</script>
+{% endif %}
+
+<style>
+
+    .login-container{
+        width: 40%;
+        background-color: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px 0px gray;
+    }
+
+    .login-title{
+        font-family: Monotype Corsiva;
+        color: darkcyan;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .form-label{
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .form-control{
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .submit-btn{
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover{
+        transform: scale(1.03);
+        background: linear-gradient(to right, #00b09b, #96c93d);
+    }
+
+</style>
+
+<!-- Marquee -->
+
+<marquee style="
+    font-family: Monotype Corsiva;
+    font-size: 30px;
+    color: darkcyan;
+    background-color: black;
+    font-weight: bold;
+    margin-top: 1%;
+    padding: 8px;
+">
+
+    Admin Login Form
+
+</marquee>
+
+<!-- Login Form -->
+
+<div class="container mt-5">
+
+    <div class="login-container mx-auto">
+
+        <h2 class="text-center login-title mb-4">
+            Admin Login
+        </h2>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <!-- Username -->
+
+            <div class="form-group">
+
+                <label class="form-label">
+                    Username
+                </label>
+
+                <input type="text"
+                name="username"
+                class="form-control"
+                placeholder="Enter Username">
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="form-group">
+
+                <label class="form-label">
+                    Password
+                </label>
+
+                <input type="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter Password">
+
+            </div>
+
+            <!-- Submit Button -->
+
+            <button type="submit" class="submit-btn mt-3">
+
+                Login
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

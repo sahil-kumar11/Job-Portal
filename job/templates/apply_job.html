@@ -1,0 +1,13 @@
+{% if status == 'success' %}
+<script>
+alert('Job Applied Successfully');
+window.location="{% url 'job_list' %}";
+</script>
+{% endif %}
+
+{% if status == 'already' %}
+<script>
+alert('You Already Applied For This Job');
+window.location="{% url 'job_list' %}";
+</script>
+{% endif %}

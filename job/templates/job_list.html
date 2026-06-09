@@ -1,0 +1,158 @@
+{% extends "user_navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+<style>
+
+body{
+    background:#f4f7fc;
+}
+
+.page-title{
+    text-align:center;
+    font-size:45px;
+    font-family:Monotype Corsiva;
+    color:#ff512f;
+    margin-top:20px;
+}
+
+.search-box{
+    width:70%;
+    margin:auto;
+    margin-top:20px;
+}
+
+.job-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0px 0px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.job-card:hover{
+    transform:translateY(-5px);
+}
+
+.company-logo{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.job-title{
+    font-size:25px;
+    font-weight:bold;
+    color:#2575fc;
+}
+
+.apply-btn{
+    background:linear-gradient(to right,#ff512f,#dd2476);
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:10px;
+    text-decoration:none;
+}
+
+.apply-btn:hover{
+    color:white;
+    text-decoration:none;
+}
+
+</style>
+
+<h1 class="page-title">
+    Available Jobs
+</h1>
+
+<div class="search-box">
+
+    <form method="GET">
+
+        <div class="input-group">
+
+            <input type="text"
+                   name="search"
+                   class="form-control"
+                   placeholder="Search Job Title">
+
+            <div class="input-group-append">
+
+                <button class="btn btn-primary">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="container mt-4">
+
+    {% for i in jobs %}
+
+    <div class="job-card">
+
+        <div class="row">
+
+            <div class="col-md-2 text-center">
+
+                {% if i.logo %}
+                <img src="{{ i.logo.url }}" class="company-logo">
+                {% else %}
+                <img src="{% static 'images/job1.jpg' %}" class="company-logo">
+                {% endif %}
+
+            </div>
+
+            <div class="col-md-7">
+
+                <div class="job-title">
+                    {{ i.title }}
+                </div>
+
+                <p><b>Company:</b> {{ i.company }}</p>
+
+                <p><b>Salary:</b> {{ i.salary }}</p>
+
+                <p><b>Experience:</b> {{ i.experience }}</p>
+
+                <p><b>Job Type:</b> {{ i.job_type }}</p>
+
+            </div>
+
+            <div class="col-md-3 text-center">
+
+                <br>
+
+                <a href="{% url 'apply_job' i.id %}"
+                   class="apply-btn">
+                   Apply Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-danger text-center">
+
+        No Jobs Available
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

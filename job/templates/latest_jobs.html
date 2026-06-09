@@ -1,0 +1,149 @@
+{% extends "navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+<style>
+
+body{
+    background: linear-gradient(135deg, #eef2ff, #f8fbff);
+}
+
+/* PAGE TITLE */
+.title{
+    text-align: center;
+    font-size: 42px;
+    margin-top: 30px;
+    font-family: Monotype Corsiva;
+    color: #ff4b2b;
+    font-weight: bold;
+}
+
+/* GRID */
+.job-container{
+    width: 92%;
+    margin: auto;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.job-card{
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover animation */
+.job-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.15);
+}
+
+/* top color strip */
+.job-card::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+}
+
+/* TITLE */
+.job-title{
+    font-size: 24px;
+    font-weight: bold;
+    color: #2575fc;
+    margin-bottom: 10px;
+}
+
+/* INFO */
+.job-info{
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+}
+
+/* BADGE STYLE */
+.badge{
+    display: inline-block;
+    padding: 4px 10px;
+    background: #eef3ff;
+    color: #2575fc;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-top: 8px;
+}
+
+/* APPLY BUTTON */
+.apply-btn{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 9px 14px;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.apply-btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+}
+
+/* empty state */
+.empty{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: gray;
+}
+
+</style>
+
+<h1 class="title">🔥 Latest Jobs</h1>
+
+<div class="job-container">
+
+    {% for job in jobs %}
+
+    <div class="job-card">
+
+        <div class="job-title">{{ job.title }}</div>
+
+        <div class="job-info">🏢 Company {{ job.company }}</div>
+        <div class="job-info">📍 Location {{ job.location }}</div>
+        <div class="job-info">💰Salary {{ job.salary }}</div>
+        <div class="job-info">📊 Experience {{ job.experience }}</div>
+
+        <span class="badge">{{ job.job_type }}</span>
+
+        <br>
+
+        <a href="{% url 'apply_job' job.id %}" class="apply-btn">
+    Apply Now
+</a>
+
+    </div>
+
+    {% empty %}
+
+    <div class="empty">
+        No jobs available right now 😢
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends "navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<style>
+
+body{
+    background: linear-gradient(135deg, #eef2ff, #f8fbff);
+}
+
+/* PAGE TITLE */
+.title{
+    text-align: center;
+    font-size: 42px;
+    margin-top: 30px;
+    font-family: Monotype Corsiva;
+    color: #ff4b2b;
+    font-weight: bold;
+}
+
+/* MAIN BOX */
+.contact-box{
+    width: 85%;
+    margin: auto;
+    margin-top: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* LEFT SIDE */
+.left{
+    width: 40%;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 40px;
+}
+
+.left h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.left p{
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+/* RIGHT SIDE FORM */
+.right{
+    width: 60%;
+    padding: 40px;
+}
+
+.form-control{
+    height: 45px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+textarea.form-control{
+    height: 120px;
+}
+
+.btn-send{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-send:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ICONS */
+.icon{
+    margin-right: 10px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .contact-box{
+        flex-direction: column;
+    }
+    .left, .right{
+        width: 100%;
+    }
+}
+
+</style>
+
+<h1 class="title">📞 Contact Us</h1>
+
+<div class="contact-box">
+
+    <!-- LEFT INFO -->
+    <div class="left">
+
+        <h2>Get in Touch</h2>
+
+        <p><i class="fa fa-map-marker icon"></i> Karachi, Pakistan</p>
+        <p><i class="fa fa-phone icon"></i> +92 300 1234567</p>
+        <p><i class="fa fa-envelope icon"></i> support@jobportal.com</p>
+
+        <hr style="background:white;">
+
+        <p>
+            We are here to help you find your dream job 🚀  
+            Feel free to contact us anytime.
+        </p>
+
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="right">
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" name="name" class="form-control" placeholder="Your Name">
+
+            <input type="email" name="email" class="form-control" placeholder="Your Email">
+
+            <input type="text" name="subject" class="form-control" placeholder="Subject">
+
+            <textarea name="message" class="form-control" placeholder="Your Message"></textarea>
+
+            <button type="submit" class="btn-send">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

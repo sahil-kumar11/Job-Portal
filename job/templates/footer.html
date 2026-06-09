@@ -1,0 +1,127 @@
+{% load static %}
+
+<!-- Footer -->
+
+<footer style="
+    background-color: #111;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    margin-top: auto;
+">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- About -->
+
+            <div class="col-md-4">
+
+                <h4 style="color:yellow;">
+                    About Us
+                </h4>
+
+                <p style="text-align:justify;">
+                    Online Job Portal System helps students and recruiters
+                    connect easily. Users can search jobs, apply online,
+                    and recruiters can post job opportunities.
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+
+            <div class="col-md-4">
+
+                <h4 style="color:yellow;">
+                    Quick Links
+                </h4>
+
+                <ul style="list-style:none; padding:0;">
+
+                    <li>
+                        <a href="{% url 'index' %}"
+                        style="color:white; text-decoration:none;">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="mt-2">
+                        <a href="{% url 'user_login' %}"
+                        style="color:white; text-decoration:none;">
+                            User Login
+                        </a>
+                    </li>
+
+                    <li class="mt-2">
+                        <a href="{% url 'recruiter_login' %}"
+                        style="color:white; text-decoration:none;">
+                            Recruiter Login
+                        </a>
+                    </li>
+
+                    <li class="mt-2">
+                        <a href="{% url 'admin_login' %}"
+                        style="color:white; text-decoration:none;">
+                            Admin Login
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+
+            <div class="col-md-4">
+
+                <h4 style="color:yellow;">
+                    Contact Info
+                </h4>
+
+                <p>
+                    <i class="fa fa-map-marker"></i>
+                    Karachi, Pakistan
+                </p>
+
+                <p>
+                    <i class="fa fa-phone"></i>
+                    +92 300 1234567
+                </p>
+
+                <p>
+                    <i class="fa fa-envelope"></i>
+                    support@jobportal.com
+                </p>
+
+                <!-- Social Icons -->
+
+                <div>
+
+                    <i class="fa fa-facebook pr-3"></i>
+                    <i class="fa fa-twitter pr-3"></i>
+                    <i class="fa fa-linkedin pr-3"></i>
+                    <i class="fa fa-instagram"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr style="background-color:white;">
+
+        <!-- Bottom Footer -->
+
+        <div class="text-center">
+
+            <p style="margin-bottom:0;">
+                © 2026 Online Job Portal System | Developed by Sahil Kumar
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>

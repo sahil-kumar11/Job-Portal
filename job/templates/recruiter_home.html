@@ -1,0 +1,132 @@
+{% extends "recruiter_navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+<style>
+
+body{
+    background: #f4f7ff;
+}
+
+/* HERO */
+.hero{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    padding: 35px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+
+.hero h1{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.hero p{
+    margin: 0;
+    opacity: 0.9;
+}
+
+.hero img{
+    width: 140px;
+}
+
+/* CARDS */
+.dashboard{
+    width: 90%;
+    margin: auto;
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card{
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-8px);
+}
+
+.card i{
+    font-size: 40px;
+    color: #ff512f;
+    margin-bottom: 10px;
+}
+
+.card h3{
+    margin: 10px 0;
+}
+
+/* BUTTON */
+.btn{
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+</style>
+
+<!-- HERO -->
+<div class="hero">
+
+    <div>
+        <h1>Welcome Recruiter 🚀</h1>
+        <p>Manage jobs, candidates and grow your hiring network</p>
+    </div>
+
+    <div>
+        <img src="{% static 'images/job1.jpg' %}">
+    </div>
+
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+
+    <div class="card">
+        <i class="fa fa-plus-circle"></i>
+        <h3>Add Job</h3>
+        <p>Create new job posting</p>
+        <a href="{% url 'add_job' %}" class="btn">Post Job</a>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-briefcase"></i>
+        <h3>My Jobs</h3>
+        <p>View all posted jobs</p>
+        <a href="{% url 'recruiter_job_list' %}" class="btn">View Jobs</a>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-users"></i>
+        <h3>Candidates</h3>
+        <p>See applied users</p>
+        <a href="{% url 'applied_candidates' %}" class="btn">View</a>
+    </div>
+
+</div>
+
+{% endblock %}

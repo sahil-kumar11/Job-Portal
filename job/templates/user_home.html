@@ -1,0 +1,132 @@
+{% extends "user_navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+<style>
+
+body{
+    background: #f4f7ff;
+}
+
+/* HERO SECTION */
+.hero{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+
+.hero h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.hero p{
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.hero img{
+    width: 180px;
+}
+
+/* CARDS */
+.dashboard{
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card{
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover{
+    transform: translateY(-8px);
+}
+
+.card i{
+    font-size: 40px;
+    color: #2575fc;
+    margin-bottom: 10px;
+}
+
+.card h3{
+    margin: 10px 0;
+}
+
+/* BUTTON */
+.btn{
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+</style>
+
+<!-- HERO -->
+<div class="hero">
+
+    <div>
+        <h1>Welcome to Job Portal</h1>
+        <p>Find jobs, apply easily and grow your career 🚀</p>
+    </div>
+
+    <div>
+        <img src="{% static 'images/job1.jpg' %}">
+    </div>
+
+</div>
+
+<!-- DASHBOARD CARDS -->
+<div class="dashboard">
+
+    <div class="card">
+        <i class="fa fa-briefcase"></i>
+        <h3>Available Jobs</h3>
+        <p>Explore latest job opportunities</p>
+        <a href="{% url 'job_list' %}" class="btn">View Jobs</a>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-paper-plane"></i>
+        <h3>Applied Jobs</h3>
+        <p>Check your applications status</p>
+        <a href="{% url 'applied_jobs' %}" class="btn">View</a>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-user"></i>
+        <h3>My Profile</h3>
+        <p>Update your personal details</p>
+        <a href="{% url 'user_profile' %}" class="btn">Edit</a>
+    </div>
+
+</div>
+
+{% endblock %}

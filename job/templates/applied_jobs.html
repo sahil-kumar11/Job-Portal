@@ -1,0 +1,172 @@
+{% extends "user_navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+<style>
+
+body{
+    background: #f4f7fc;
+}
+
+.main-box{
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 25px rgba(0,0,0,0.15);
+}
+
+.page-title{
+    text-align: center;
+    font-size: 42px;
+    font-family: Monotype Corsiva;
+    color: #ff512f;
+    margin-bottom: 25px;
+}
+
+.table{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table thead{
+    background: linear-gradient(to right,#6a11cb,#2575fc);
+    color: white;
+}
+
+.table th{
+    text-align: center;
+    padding: 15px;
+}
+
+.table td{
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+}
+
+.table tbody tr{
+    transition: 0.3s;
+}
+
+.table tbody tr:hover{
+    background: #eef3ff;
+    transform: scale(1.01);
+}
+
+.job-badge{
+    background: #2575fc;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.company-badge{
+    background: #28a745;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.date-badge{
+    background: #ff512f;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.empty-box{
+    text-align: center;
+    padding: 50px;
+}
+
+.empty-box img{
+    width: 180px;
+    margin-bottom: 15px;
+}
+
+.empty-box h4{
+    color: #888;
+}
+
+</style>
+
+<div class="main-box">
+
+    <h1 class="page-title">
+        My Applied Jobs
+    </h1>
+
+    {% if jobs %}
+
+    <table class="table table-bordered table-hover">
+
+        <thead>
+
+            <tr>
+                <th>#</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Applied Date</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for i in jobs %}
+
+            <tr>
+
+                <td>{{ forloop.counter }}</td>
+
+                <td>
+                    <span class="job-badge">
+                        {{ i.job.title }}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="company-badge">
+                        {{ i.job.company }}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="date-badge">
+                        {{ i.apply_date }}
+                    </span>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <div class="empty-box">
+
+        <img src="{% static 'images/job1.jpg' %}">
+
+        <h4>No Jobs Applied Yet</h4>
+
+        <p>
+            Start applying for jobs and they will appear here.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

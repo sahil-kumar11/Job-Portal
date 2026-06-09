@@ -1,0 +1,92 @@
+{% extends "recruiter_navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+{% if error == "no" %}
+<script>
+    alert("Job Added Successfully!");
+    window.location = "{% url 'recruiter_home' %}";
+</script>
+{% endif %}
+
+<style>
+
+.form-box{
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+}
+
+.title{
+    text-align: center;
+    font-size: 35px;
+    font-family: Monotype Corsiva;
+    color: #ff4b2b;
+    margin-bottom: 20px;
+}
+
+.form-control{
+    margin-bottom: 12px;
+    height: 45px;
+}
+
+textarea.form-control{
+    height: 100px;
+}
+
+.btn-submit{
+    width: 100%;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: white;
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.btn-submit:hover{
+    background: linear-gradient(to right, #00b09b, #96c93d);
+    transform: scale(1.02);
+}
+
+</style>
+
+<div class="form-box">
+
+    <div class="title">Add New Job</div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="title" class="form-control" placeholder="Job Title">
+
+        <input type="text" name="company" class="form-control" placeholder="Company Name">
+
+        <input type="text" name="location" class="form-control" placeholder="Location">
+
+        <input type="text" name="salary" class="form-control" placeholder="Salary">
+
+        <input type="text" name="experience" class="form-control" placeholder="Experience Required">
+
+        <select name="job_type" class="form-control">
+            <option>Full Time</option>
+            <option>Part Time</option>
+            <option>Internship</option>
+        </select>
+
+        <textarea name="description" class="form-control" placeholder="Job Description"></textarea>
+
+        <button type="submit" class="btn-submit">
+            Post Job
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

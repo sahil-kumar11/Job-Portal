@@ -1,0 +1,139 @@
+{% extends "navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+<style>
+
+    .container-custom{
+        max-width: 90%;
+        margin: auto;
+    }
+
+    .student-card{
+        position: relative;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .student-card img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+    }
+
+    .content{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        width: 200px;
+        padding: 8px;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+    }
+
+</style>
+
+<!-- Banner Section -->
+
+<div class="container-fluid p-0" style="margin-top:1%;">
+    <img src="{% static 'images/job2.jpg' %}" 
+         style="height:450px; width:100%; object-fit:cover;">
+</div>
+
+<!-- Placed Students Section -->
+
+<div class="container-custom bg-dark mt-4 p-4 rounded">
+
+    <h1 class="text-center text-white mb-5">
+        ----- OUR PLACED STUDENTS -----
+    </h1>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S1.jpg' %}">
+                <div class="content">
+                    <p>Facebook</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S2.jpg' %}">
+                <div class="content">
+                    <p>Nokia</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S3.jpg' %}">
+                <div class="content">
+                    <p>Microsoft</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S4.jpg' %}">
+                <div class="content">
+                    <p>Amazon</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S4.jpg' %}">
+                <div class="content">
+                    <p>LinkedIn</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S5.jpg' %}">
+                <div class="content">
+                    <p>Netflix</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S6.jpg' %}">
+                <div class="content">
+                    <p>Meta</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="student-card">
+                <img src="{% static 'images/S7.jpg' %}">
+                <div class="content">
+                    <p>Infosys</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

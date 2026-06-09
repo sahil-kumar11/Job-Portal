@@ -1,0 +1,134 @@
+{% extends "navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+{% if error == "no" %}
+<script>
+    alert("Recruiter Account Created Successfully");
+    window.location = "{% url 'recruiter_login' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something Went Wrong, Try Again");
+</script>
+{% endif %}
+
+<style>
+
+body{
+    background: linear-gradient(120deg, #c2e9fb, #a1c4fd);
+}
+
+/* Card */
+.register-box{
+    width: 40%;
+    margin: auto;
+    margin-top: 50px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Title */
+.register-box h2{
+    font-family: Monotype Corsiva;
+    font-size: 40px;
+    color: #2575fc;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Inputs */
+.form-control{
+    height: 45px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+/* focus animation */
+.form-control:focus{
+    border-color: #2575fc;
+    box-shadow: 0 0 10px rgba(37,117,252,0.4);
+    transform: scale(1.02);
+}
+
+/* Button */
+.btn-register{
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+/* hover effect */
+.btn-register:hover{
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+
+<div class="container">
+
+    <div class="register-box">
+
+        <h2>Recruiter Register</h2>
+
+        <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <input type="text" name="username" class="form-control" placeholder="Username">
+
+    <input type="email" name="email" class="form-control" placeholder="Company Email">
+
+    <input type="text" name="company" class="form-control" placeholder="Company Name">
+
+    <input type="text" name="mobile" class="form-control" placeholder="Mobile Number">
+
+    <select name="gender" class="form-control">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+    <input type="file" name="image" class="form-control">
+
+    <input type="password" name="password" class="form-control" placeholder="Password">
+
+    <button type="submit" class="btn-register">
+        Create Recruiter Account
+    </button>
+
+</form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "admin_navigation.html" %}
+{% load static %}
+
+{% block body %}
+
+{% if msg == "accepted" %}
+<script>
+    alert("Recruiter Accepted Successfully");
+</script>
+{% endif %}
+
+{% if msg == "rejected" %}
+<script>
+    alert("Recruiter Rejected Successfully");
+</script>
+{% endif %}
+
+<style>
+
+.table-box{
+    width: 95%;
+    margin: auto;
+    margin-top: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+}
+
+.title{
+    text-align: center;
+    font-size: 38px;
+    font-family: Monotype Corsiva;
+    color: #ff9800;
+    margin-bottom: 20px;
+}
+
+.table th{
+    background: linear-gradient(to right, #ff9800, #ff5722);
+    color: white;
+    text-align: center;
+}
+
+.table td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table tr:hover{
+    background: #f5f5f5;
+    transition: 0.3s;
+}
+
+.badge-pending{
+    padding: 5px 10px;
+    background: orange;
+    color: white;
+    border-radius: 8px;
+}
+
+.profile-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-action{
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 2px;
+}
+
+.btn-accept{
+    background: green;
+}
+
+.btn-reject{
+    background: red;
+}
+
+.btn-action:hover{
+    opacity: 0.8;
+}
+
+</style>
+
+<div class="table-box">
+
+    <div class="title">
+        Pending Recruiters Requests
+    </div>
+
+    <table class="table table-bordered table-hover">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for i in data %}
+
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.user.username }}</td>
+                <td>{{ i.user.email }}</td>
+                <td>{{ i.company }}</td>
+                <td>{{ i.type }}</td>
+
+                <td>
+                    <span class="badge-pending">
+                        {{ i.status }}
+                    </span>
+                </td>
+
+                <td>
+
+    <a href="{% url 'accept_recruiter' i.id %}"
+       class="btn-action btn-accept"
+       onclick="return confirm('Accept this recruiter?')">
+
+        Accept
+    </a>
+
+    <a href="{% url 'reject_recruiter' i.id %}"
+       class="btn-action btn-reject"
+       onclick="return confirm('Reject this recruiter?')">
+
+        Reject
+    </a>
+
+</td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}
